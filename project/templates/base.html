@@ -9,6 +9,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Flask Auth Example</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hero.is-primary {
+            background-color: #1f8362;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px;
+        }
+
+        table td,
+        table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #e9e9e9;
+        }
+
+        table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .edit_delete {
+            color: rgb(212, 72, 72);
+        }
+
+        .edit_delete:hover {
+            background-color: #d6404d;
+            color: white;
+        }
+
+        .edit_delete:checked {
+            background-color: #c05c65;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>

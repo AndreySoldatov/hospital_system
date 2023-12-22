@@ -1,0 +1,70 @@
+<!-- templates/profile.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  Information about {{ patient.name }}:
+</h1>
+<div class="box" name="patient_info"><table>
+    <tr>
+      <td>Name</td>
+      <td>{{ patient.name }}</td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td>{{ patient.gender }}</td>
+    </tr>
+    <tr>
+      <td>Phone</td>
+      <td>{{ patient.phone }}</td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td>{{ patient.address }}</td>
+    </tr>
+    <tr>
+      <td>Admission date</td>
+      <td>{{ patient.admission_date }}</td>
+    </tr>
+    <tr>
+      <td>Discharge date</td>
+      <td>{{ patient.discharge_date }}</td>
+    </tr>
+  </table>
+</div>
+<div class="box" name="medical_records">
+    <h1>Medical Records</h1>
+      {% for medical_record in medical_records %}
+      <table>
+        <tr>
+          <td>Diagnosis</td>
+          <td>{{ medical_record.diagnosis }}</td>
+        </tr>
+        <tr>
+          <td>Prescription</td>
+          <td>{{ medical_record.prescription }}</td>
+        </tr>
+        <tr>
+          <td>Treatment plan</td>
+          <td>{{ medical_record.treatment_plan }}</td>
+        </tr>
+        <tr> 
+            <td class="edit_delete">
+                <a href="/delete_medical_record/{{ medical_record.id }}">Delete</a>
+            </td>
+        </tr>
+      </table>
+      {% endfor %}
+</div>
+<div class="box" name="add_medical_record">
+    <h1>Add medical record:</h1>
+    <form action="/add_medical_record" method="post">
+      <input type="text" name="diagnosis" placeholder="Diagnosis" required="true">
+      <input type="text" name="prescription" placeholder="Prescription">
+      <input type="text" name="treatment_plan" placeholder="Treatment plan">
+      <input type="number" name="patient_id" value="{{ patient.id }}" hidden="true">
+      <input type="submit" value="Add medical record">
+    </form>
+</div>
+{% endblock %}

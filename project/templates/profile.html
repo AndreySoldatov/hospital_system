@@ -6,4 +6,40 @@
 <h1 class="title">
   Welcome, {{ name }}!
 </h1>
+<div class="box" name = "patients">
+  <h2>
+    Your patients are:
+  </h2>
+  <table>
+    {% for patient in patients %}
+      <tr>
+        <td>
+          <a href="/patient/{{ patient.id }}" style="color: rgb(35, 156, 110); font-weight: bold;">{{ patient.name }}</a>
+        </td>
+        <td>{{ patient.gender }}</td>
+        <td>{{ patient.phone }}</td>
+        <td>{{ patient.address }}</td>
+        <td>{{ patient.admission_date }}</td>
+        <td>{{ patient.discharge_date }}</td>
+        <td class="edit_delete">
+          <a href="/delete_patient/{{ patient.id }}">Delete</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+</div>
+<div class="box" name="add_patient">
+  <h2>
+    Add a new patient:
+  </h2>
+  <form action="/add_patient" method="post">
+    <input type="text" name="name" placeholder="Name">
+    <input type="text" name="gender" placeholder="Gender">
+    <input type="text" name="phone" placeholder="Phone">
+    <input type="text" name="address" placeholder="Address">
+    <input type="date" name="admission_date" placeholder="Admission date">
+    <input type="date" name="discharge_date" placeholder="Discharge date">
+    <input type="submit" value="Add patient">
+  </form>
+</div>
 {% endblock %}
