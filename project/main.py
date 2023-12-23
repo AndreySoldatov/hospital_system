@@ -98,4 +98,4 @@ def add_patient():
     db.session.add(patient)
     db.session.commit()
     flash('Patient added')
-    return redirect(url_for('main.profile'))
+    return redirect(f'/patient/{patient.id}')

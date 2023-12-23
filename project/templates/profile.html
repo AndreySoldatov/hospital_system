@@ -7,14 +7,37 @@
   Welcome, {{ name }}!
 </h1>
 <div class="box" name = "patients">
-  <h2>
+  <h2 style="font-weight: bold;">
     Your patients are:
   </h2>
   <table>
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Gender
+        </th>
+        <th>
+          Phone
+        </th>
+        <th>
+          Address
+        </th>
+        <th>
+          Admission date
+        </th>
+        <th>
+          Discharge date
+        </th>
+        <th>
+          Delete
+        </th>
+      </tr>
     {% for patient in patients %}
       <tr>
-        <td>
-          <a href="/patient/{{ patient.id }}" style="color: rgb(35, 156, 110); font-weight: bold;">{{ patient.name }}</a>
+        <td class="patient_name">
+          <a href="/patient/{{ patient.id }}">{{ patient.name }}</a>
         </td>
         <td>{{ patient.gender }}</td>
         <td>{{ patient.phone }}</td>
@@ -22,16 +45,17 @@
         <td>{{ patient.admission_date }}</td>
         <td>{{ patient.discharge_date }}</td>
         <td class="edit_delete">
-          <a href="/delete_patient/{{ patient.id }}">Delete</a>
+          <a href="/delete_patient/{{ patient.id }}" onclick="return confirm('Are you sure you want to delete this patient?')">Delete</a>
         </td>
       </tr>
     {% endfor %}
   </table>
 </div>
 <div class="box" name="add_patient">
-  <h2>
+  <h2 style="font-weight: bold;">
     Add a new patient:
   </h2>
+  <br>
   <form action="/add_patient" method="post">
     <input type="text" name="name" placeholder="Name">
     <input type="text" name="gender" placeholder="Gender">
